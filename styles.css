@@ -519,8 +519,8 @@ button:focus-visible, input:focus-visible, a:focus-visible {
 .score-pill-stack {
   width: min(880px, 100%);
   margin: 0 auto;
-  --pill-h: clamp(52px, 7vw, 72px);
-  --circle-d: clamp(58px, 8vw, 82px);
+  --pill-h: clamp(56px, 7vw, 76px);
+  --circle-d: calc(var(--pill-h) * 0.84);
 }
 .score-pill {
   position: relative;
@@ -541,16 +541,16 @@ button:focus-visible, input:focus-visible, a:focus-visible {
 .score-pill-side.home {
   justify-content: flex-start;
   padding-left: clamp(18px, 2.6vw, 32px);
-  padding-right: calc(var(--circle-d) / 2 + 20px);
-  border: 3px solid var(--yellow);
+  padding-right: calc(var(--circle-d) / 2 + 24px);
+  border: 2px solid var(--yellow);
   border-right: 0;
   border-radius: 999px 0 0 999px;
 }
 .score-pill-side.away {
   justify-content: flex-end;
   padding-right: clamp(18px, 2.6vw, 32px);
-  padding-left: calc(var(--circle-d) / 2 + 20px);
-  border: 3px solid var(--red);
+  padding-left: calc(var(--circle-d) / 2 + 24px);
+  border: 2px solid var(--red);
   border-left: 0;
   border-radius: 0 999px 999px 0;
 }
@@ -573,7 +573,6 @@ button:focus-visible, input:focus-visible, a:focus-visible {
   transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
-  gap: clamp(6px, 1vw, 10px);
 }
 .score-pill-num {
   flex: 0 0 auto;
@@ -587,19 +586,16 @@ button:focus-visible, input:focus-visible, a:focus-visible {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 900;
-  font-size: clamp(20px, 2.8vw, 32px);
-  box-shadow: 0 6px 16px rgba(3,8,68,.3);
+  font-size: clamp(18px, 2.6vw, 30px);
 }
 .score-pill-brand {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: var(--pill-h);
-  padding: 0 clamp(12px, 1.6vw, 18px);
-  border-radius: 999px;
+  height: var(--circle-d);
+  padding: 0 clamp(10px, 1.4vw, 16px);
   background: var(--white);
-  box-shadow: 0 6px 16px rgba(3,8,68,.3);
 }
 .score-pill-brand .sbet-mark { height: 55%; }
 .score-pill-below {
@@ -864,7 +860,7 @@ button:focus-visible, input:focus-visible, a:focus-visible {
   .pitch-dot { width: 38px; height: 38px; }
   .pitch-label { font-size: 9px; }
   .team-panel--away { text-align: left; }
-  .score-pill-stack { --pill-h: 52px; --circle-d: 58px; }
+  .score-pill-stack { --pill-h: 52px; }
   .bleed-row { gap: 14px; }
   .bg-text span { font-size: 26px; }
   .signin-actions { width: 100%; }
