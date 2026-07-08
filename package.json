@@ -1,0 +1,10 @@
+{
+  "name": "squad-up",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A five-a-side Premier League match simulator.",
+  "scripts": {
+    "dev": "python3 -m http.server 4173",
+    "start": "python3 -m http.server 4173"
+  }
+}
