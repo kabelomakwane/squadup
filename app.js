@@ -793,11 +793,13 @@
     return `
       <div class="score-pill-stack">
         <div class="score-pill">
-          <span class="score-pill-name home">${escapeHtml(state.home.name)}</span>
-          <span class="score-pill-num" data-score-side="home">${score.home}</span>
-          <span class="score-pill-brand" aria-hidden="true"><span class="s-mark">S</span>BET</span>
-          <span class="score-pill-num" data-score-side="away">${score.away}</span>
-          <span class="score-pill-name away">${escapeHtml(state.away.name)}</span>
+          <div class="score-pill-inner">
+            <span class="score-pill-name home">${escapeHtml(state.home.name)}</span>
+            <span class="score-pill-num" data-score-side="home">${score.home}</span>
+            <span class="score-pill-brand" aria-hidden="true"><span class="s-mark">S</span>BET</span>
+            <span class="score-pill-num" data-score-side="away">${score.away}</span>
+            <span class="score-pill-name away">${escapeHtml(state.away.name)}</span>
+          </div>
         </div>
         <div class="score-pill-below">
           ${showClock ? `<div class="clock-chip ${status.kind === "paused" ? "clock-chip--paused" : ""}"><time class="clock-chip-text">${escapeHtml(status.text)}</time></div>` : ""}

@@ -526,18 +526,20 @@ button:focus-visible, input:focus-visible, a:focus-visible {
 /* Score pill (Commentary + Summary scoreboard) */
 .score-pill-stack { width: min(880px, 100%); margin: 0 auto; }
 .score-pill {
+  width: 100%;
+  padding: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--yellow), var(--red));
+  box-shadow: var(--shadow);
+}
+.score-pill-inner {
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 64px;
+  min-height: 58px;
   border-radius: 999px;
   padding: 6px 10px;
-  background: linear-gradient(90deg, var(--yellow), var(--yellow) 4px, transparent 4px) left/100% 100% no-repeat,
-              linear-gradient(270deg, var(--red), var(--red) 4px, transparent 4px) right/100% 100% no-repeat;
-  border: 3px solid transparent;
-  border-image: linear-gradient(90deg, var(--yellow), var(--red)) 1;
-  background-color: var(--blue-deep);
-  box-shadow: var(--shadow);
+  background: var(--blue-deep);
 }
 .score-pill-name {
   flex: 1;
