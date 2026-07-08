@@ -149,7 +149,7 @@
   function betResponsibly() {
     return `
       <div class="bet-responsibly">
-        <p class="bet-responsibly-logo"><span class="s-mark">S</span>BET RESPONSIBLY</p>
+        <p class="bet-responsibly-logo"><img class="sbet-mark" src="assets/sbet-mark.svg" alt="" aria-hidden="true" />BET RESPONSIBLY</p>
         <p class="bet-responsibly-copy">SuperSportBet is licenced by the Western Cape Gambling and Racing Board. Bookmaker licence: 10191097. No persons under the age of 18 are permitted to gamble. Winners know when to stop. National Responsible Gambling Programme toll free counselling line 0800 006 008 or WHATSAPP HELP 076 675 0710. T&amp;C's Apply.</p>
       </div>`;
   }
@@ -793,12 +793,12 @@
     return `
       <div class="score-pill-stack">
         <div class="score-pill">
-          <div class="score-pill-inner">
-            <span class="score-pill-name home">${escapeHtml(state.home.name)}</span>
+          <div class="score-pill-side home"><span class="score-pill-name">${escapeHtml(state.home.name)}</span></div>
+          <div class="score-pill-side away"><span class="score-pill-name">${escapeHtml(state.away.name)}</span></div>
+          <div class="score-pill-center">
             <span class="score-pill-num" data-score-side="home">${score.home}</span>
-            <span class="score-pill-brand" aria-hidden="true"><span class="s-mark">S</span>BET</span>
+            <span class="score-pill-brand" aria-hidden="true"><img class="sbet-mark" src="assets/sbet-mark.svg" alt="" /></span>
             <span class="score-pill-num" data-score-side="away">${score.away}</span>
-            <span class="score-pill-name away">${escapeHtml(state.away.name)}</span>
           </div>
         </div>
         <div class="score-pill-below">

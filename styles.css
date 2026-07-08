@@ -172,24 +172,16 @@ button:focus-visible, input:focus-visible, a:focus-visible {
   text-align: center;
 }
 .bet-responsibly-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   margin: 0 0 6px;
   font-size: 13px;
   font-weight: 800;
   letter-spacing: .03em;
 }
-.s-mark {
-  display: inline-grid;
-  place-items: center;
-  width: 16px;
-  height: 16px;
-  margin-right: 4px;
-  border-radius: 50%;
-  background: var(--red);
-  color: var(--yellow);
-  font-style: normal;
-  font-size: 10px;
-  font-weight: 900;
-}
+.sbet-mark { display: block; height: 15px; width: auto; }
 .bet-responsibly-copy { margin: 0; font-size: 10px; line-height: 1.5; color: var(--muted); }
 
 /* Age check / not-18 */
@@ -524,66 +516,92 @@ button:focus-visible, input:focus-visible, a:focus-visible {
 .builder-status { min-height: 20px; margin: 10px 0 0; color: var(--muted); font-size: 13px; text-align: center; }
 
 /* Score pill (Commentary + Summary scoreboard) */
-.score-pill-stack { width: min(880px, 100%); margin: 0 auto; }
+.score-pill-stack {
+  width: min(880px, 100%);
+  margin: 0 auto;
+  --pill-h: clamp(52px, 7vw, 72px);
+  --circle-d: clamp(58px, 8vw, 82px);
+}
 .score-pill {
-  width: 100%;
-  padding: 3px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--yellow), var(--red));
-  box-shadow: var(--shadow);
-}
-.score-pill-inner {
+  position: relative;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
-  min-height: 58px;
-  border-radius: 999px;
-  padding: 6px 10px;
-  background: var(--blue-deep);
+  height: var(--pill-h);
+  filter: drop-shadow(var(--shadow));
 }
-.score-pill-name {
+.score-pill-side {
   flex: 1;
   min-width: 0;
+  display: flex;
+  align-items: center;
+  background: var(--blue-deep);
+  box-sizing: border-box;
+}
+.score-pill-side.home {
+  justify-content: flex-start;
+  padding-left: clamp(18px, 2.6vw, 32px);
+  padding-right: calc(var(--circle-d) / 2 + 20px);
+  border: 3px solid var(--yellow);
+  border-right: 0;
+  border-radius: 999px 0 0 999px;
+}
+.score-pill-side.away {
+  justify-content: flex-end;
+  padding-right: clamp(18px, 2.6vw, 32px);
+  padding-left: calc(var(--circle-d) / 2 + 20px);
+  border: 3px solid var(--red);
+  border-left: 0;
+  border-radius: 0 999px 999px 0;
+}
+.score-pill-name {
+  min-width: 0;
   overflow: hidden;
-  padding: 0 14px;
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 700;
-  font-size: clamp(14px, 1.6vw, 20px);
+  font-size: clamp(13px, 1.6vw, 20px);
   text-overflow: ellipsis;
   white-space: nowrap;
   color: var(--white);
 }
-.score-pill-name.away { text-align: right; }
+.score-pill-center {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 10px);
+}
 .score-pill-num {
   flex: 0 0 auto;
   display: grid;
   place-items: center;
-  width: 52px;
-  height: 52px;
+  width: var(--circle-d);
+  height: var(--circle-d);
   border-radius: 50%;
   background: var(--white);
   color: var(--blue);
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 900;
-  font-size: 26px;
+  font-size: clamp(20px, 2.8vw, 32px);
+  box-shadow: 0 6px 16px rgba(3,8,68,.3);
 }
 .score-pill-brand {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  gap: 3px;
-  margin: 0 8px;
-  padding: 4px 10px;
+  justify-content: center;
+  height: var(--pill-h);
+  padding: 0 clamp(12px, 1.6vw, 18px);
   border-radius: 999px;
   background: var(--white);
-  color: var(--red);
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: .02em;
+  box-shadow: 0 6px 16px rgba(3,8,68,.3);
 }
-.score-pill-brand .s-mark { background: var(--red); color: var(--yellow); }
+.score-pill-brand .sbet-mark { height: 55%; }
 .score-pill-below {
   display: flex;
   justify-content: center;
@@ -846,9 +864,7 @@ button:focus-visible, input:focus-visible, a:focus-visible {
   .pitch-dot { width: 38px; height: 38px; }
   .pitch-label { font-size: 9px; }
   .team-panel--away { text-align: left; }
-  .score-pill { flex-wrap: wrap; }
-  .score-pill-name { font-size: 13px; }
-  .score-pill-num { width: 40px; height: 40px; font-size: 18px; }
+  .score-pill-stack { --pill-h: 52px; --circle-d: 58px; }
   .bleed-row { gap: 14px; }
   .bg-text span { font-size: 26px; }
   .signin-actions { width: 100%; }
