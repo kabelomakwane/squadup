@@ -4,7 +4,7 @@
   const PLAYERS = window.SQUAD_UP_PLAYERS || [];
   const POSITIONS = ["ST", "MID", "MID", "DEF", "GK"];
   const STORAGE_KEY = "squad-up-state-v1";
-  const MATCH_DURATION_MS = 150000;
+  const MATCH_DURATION_MS = 60000;
   const LOADING_BEAT_MS = 1800;
   const WINNER_REVEAL_MS = 5200;
   const COMMENTARY_MIN_MS = 4800;
@@ -152,7 +152,7 @@
       <main class="app-shell">
         <section class="screen screen--enter home-screen" aria-labelledby="home-title">
           <div class="home-inner">
-            <h1 class="brand" id="home-title">Squad Up</h1>
+            <h1 id="home-title"><img class="brand" src="squad-up-logo.svg" alt="Squad Up"></h1>
             <p class="home-copy">Build a five-a-side lineup, choose an opponent, and watch a simulated fixture unfold with live play-by-play drama.</p>
             <button class="button button--wide" data-action="new-game">New Game</button>
           </div>
@@ -166,7 +166,7 @@
         <section class="screen builder-screen ${animate ? "screen--enter" : ""}" aria-labelledby="builder-title">
           <div class="topline">
             <button class="text-button" data-action="home" aria-label="Return to home">← Home</button>
-            <h1 class="brand brand--small" id="builder-title">Squad Up</h1>
+            <h1 id="builder-title"><img class="brand brand--small" src="squad-up-logo.svg" alt="Squad Up"></h1>
             <span aria-hidden="true" style="width:64px"></span>
           </div>
           <div class="builder-grid">
@@ -440,13 +440,13 @@
       });
     };
 
-    scheduleHalf(firstHalf, 0, 71500);
+    scheduleHalf(firstHalf, 0, 28600);
     if (halftimeIndex >= 0) {
-      events[halftimeIndex].atMs = 75000;
-      events[halftimeIndex].displayMs = 5000;
+      events[halftimeIndex].atMs = 30000;
+      events[halftimeIndex].displayMs = 2000;
       events[halftimeIndex].displayMinute = 15;
     }
-    scheduleHalf(secondHalf, 79500, 146500);
+    scheduleHalf(secondHalf, 31800, 58600);
     if (fulltimeIndex >= 0) {
       events[fulltimeIndex].atMs = MATCH_DURATION_MS;
       events[fulltimeIndex].displayMs = 0;
@@ -580,7 +580,7 @@
       <main class="app-shell">
         <section class="screen loading-screen screen--enter" aria-labelledby="loading-title">
           <div class="loading-inner">
-            <h1 class="brand brand--small">Squad Up</h1>
+            <h1><img class="brand brand--small" src="squad-up-logo.svg" alt="Squad Up"></h1>
             <div class="loading-fixture" aria-label="${escapeHtml(state.home.name)} versus ${escapeHtml(state.away.name)}">
               <span>${escapeHtml(state.home.name)}</span>
               <strong>VS</strong>
@@ -693,7 +693,7 @@
     app.innerHTML = `
       <main class="app-shell">
         <section class="screen ${animate ? "screen--enter" : ""} match-screen" aria-labelledby="match-title">
-          <h1 class="brand brand--small" id="match-title">Squad Up</h1>
+          <h1 id="match-title"><img class="brand brand--small" src="squad-up-logo.svg" alt="Squad Up"></h1>
           ${renderScoreBug(score, false, true)}
           <div class="match-controls">
             <button class="icon-button" data-action="pause">${state.paused ? "Play" : "Pause"}</button>
@@ -726,7 +726,7 @@
 
   function formatMatchClock(elapsed) {
     const halfDuration = MATCH_DURATION_MS / 2;
-    const stoppageWindow = 5000;
+    const stoppageWindow = 2000;
     const regulationWindow = halfDuration - stoppageWindow;
     const inSecondHalf = elapsed >= halfDuration;
     const halfElapsed = inSecondHalf ? elapsed - halfDuration : elapsed;
@@ -745,7 +745,7 @@
   function scoreBugStatus() {
     if (state.paused) return { kind: "paused", text: "Paused" };
     const halfDuration = MATCH_DURATION_MS / 2;
-    if (state.elapsedMs >= halfDuration && state.elapsedMs < halfDuration + 1800) {
+    if (state.elapsedMs >= halfDuration && state.elapsedMs < halfDuration + 720) {
       return { kind: "half-time", text: "Half Time" };
     }
     return { kind: "live", text: formatMatchClock(state.elapsedMs) };
@@ -910,7 +910,7 @@
     app.innerHTML = `
       <main class="app-shell">
         <section class="screen screen--enter summary-screen" aria-labelledby="summary-title">
-          <h1 class="brand brand--small">Squad Up</h1>
+          <h1><img class="brand brand--small" src="squad-up-logo.svg" alt="Squad Up"></h1>
           <div class="summary-wrap">
             <h2 class="summary-headline" id="summary-title">${escapeHtml(state.match.headline)}</h2>
             <p class="summary-copy">${escapeHtml(state.match.description)}</p>

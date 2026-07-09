@@ -96,18 +96,12 @@ button:focus-visible, input:focus-visible, a:focus-visible {
   to { opacity: 1; transform: none; }
 }
 .brand {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-style: italic;
-  font-size: clamp(52px, 8.33vw, 120px);
-  line-height: .9;
-  letter-spacing: .01em;
-  text-align: center;
-  text-transform: uppercase;
-  color: var(--yellow);
+  display: block;
+  margin: 0 auto;
+  width: clamp(196px, 31vw, 452px);
+  height: auto;
 }
-.brand--small { font-size: clamp(36px, 5vw, 72px); }
+.brand--small { width: clamp(136px, 19vw, 272px); }
 .eyebrow {
   margin: 0 0 8px;
   font-size: 12px;
@@ -767,7 +761,7 @@ button:focus-visible, input:focus-visible, a:focus-visible {
     grid-template-rows: auto minmax(0, 1fr) auto;
   }
   .builder-screen .topline { width: 100%; margin-bottom: 12px; }
-  .builder-screen .brand--small { font-size: clamp(48px, 5vw, 68px); }
+  .builder-screen .brand--small { width: clamp(181px, 19vw, 256px); }
   .builder-grid {
     width: 100%;
     min-height: 0;
